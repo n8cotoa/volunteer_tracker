@@ -22,4 +22,8 @@ def save
   @id = result.first.fetch('id')
 end
 
+def ==(another_project)
+  self.title.==(another_project.title)
+end
+
 end
