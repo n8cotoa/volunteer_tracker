@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-6">
+    <h3>Here are your current projects</h3>
+    <% if @projects.any? %>
+      <ul>
+        <% @projects.each do |project| %>
+          <li><a href="/project/<%=project.id%>"><%=project.title%></a></li>
+        <% end %>
+      </ul>
+    <% else %>
+        <p>There are currently no projects</p>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <h4>Add a project:</h4>
+    <form action="/new_project" method="post">
+      <div class="form-group">
+        <label for="title">Project Title</label>
+        <input class="form-control" type="text" name="title">
+      </div>
+      <button type="submit" class="btn btn-info">Add Project</button>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <h3>Here are your current volunteers</h3>
+    <% if @volunteers.any? %>
+      <ul>
+        <% @volunteers.each do |volunteer| %>
+          <li><a href="/volunteer/<%= volunteer.id %>"><%=volunteer.name%></a></li>
+        <% end %>
+      </ul>
+    <% else %>
+        <p>There are currently no volunteers</p>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <h4>Add a volunteer:</h4>
+    <form action="/new_volunteer" method="post">
+      <div class="form-group">
+        <label for="name">Volunteer Name</label>
+        <input class="form-control" type="text" name="name">
+      </div>
+      <div class="form-group">
+        <select id='project_id' name='project_id' type='text' class="form-control">
+          <% @projects.each() do |project| %>
+            <option value="<%= project.id()%>"> <%= project.title %> </option>
+          <% end %>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-info">Add Volunteer</button>
+    </form>
+  </div>
+</div>
