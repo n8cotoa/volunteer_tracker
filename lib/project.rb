@@ -1,4 +1,5 @@
 class Project
+  attr_reader(:title, :id)
 
 def initialize(attr)
   @title = attr.fetch(:title)
