@@ -30,7 +30,7 @@ class Volunteer
   end
 
   def delete
-    DB.exec("DELETE FROM projects WHERE id = #{self.id};")
+    DB.exec("DELETE FROM volunteers WHERE id = #{self.id};")
   end
 
   def project
