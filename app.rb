@@ -22,14 +22,6 @@ post('/new_project') do
   redirect back
 end
 
-post('/new_volunteer') do
-  name = params.fetch("name")
-  project_id = params.fetch("project_id")
-  volunteer = Volunteer.new({:name => name, :project_id => project_id, :id => nil})
-  volunteer.save
-  redirect back
-end
-
 get('/project/:id') do
   id = params[:id].to_i
   @project = Project.find(id)
@@ -54,4 +46,30 @@ delete('/project/:id') do
   @volunteers = Volunteer.all
   redirect '/'
   erb(:index)
+end
+
+post('/new_volunteer') do
+  name = params.fetch("name")
+  project_id = params.fetch("project_id")
+  volunteer = Volunteer.new({:name => name, :project_id => project_id, :id => nil})
+  volunteer.save
+  redirect back
+end
+
+get('/volunteer/:id') do
+  id = params[:id].to_i
+  @volunteer = Volunteer.find(id)
+  @project = @volunteer.project
+  @projects = Project.all
+  erb(:volunteer)
+end
+
+patch('/volunteer/:id') do
+ id = params["id"].to_i
+ project_id = params['project_id']
+ @volunteer = Volunteer.find(id)
+ @volunteer.update({:project_id => project_id})
+ @projects = Project.all
+ @project = @volunteer.project
+ erb(:volunteer)
 end

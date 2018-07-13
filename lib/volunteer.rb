@@ -24,6 +24,16 @@ class Volunteer
     @id = results.first['id']
   end
 
+  def update(attr)
+    @project_id = attr.fetch(:project_id, @project_id)
+    DB.exec("UPDATE volunteers SET project_id = #{@project_id} WHERE id = #{self.id};")
+  end
+
+  def project
+    project = DB.exec("SELECT title FROM projects WHERE id = #{self.project_id};")
+    project_title = project.first["title"]
+  end
+
   def self.find(id)
     returned_volunteer = DB.exec("SELECT * FROM volunteers WHERE id = #{id};")
     id = returned_volunteer.first["id"].to_i
