@@ -28,5 +28,12 @@ describe 'project detail path', {:type => :feature} do
     click_button('Update')
     expect(page).to have_content('Teaching Kids to Cook')
   end
+  it 'deletes project' do
+    visit '/'
+    fill_in('title', :with => 'Teaching Kids to Code')
+    click_button('Add Project')
+    click_link('Teaching Kids to Code')
+    click_button('Delete')
+    expect(page).to have_no_content('Teaching Kids Code')
+  end
 end
-# A user should be able to click on a project to see its detail. The detail page includes a form where the project can be updated. When the form is submitted, the user can be directed to either the home page or that project's detail page. (The test will work for either.)
