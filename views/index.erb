@@ -23,34 +23,38 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-6">
-    <h3>Here are your current volunteers</h3>
-    <% if @volunteers.any? %>
-      <ul>
-        <% @volunteers.each do |volunteer| %>
-          <li><a href="/volunteer/<%= volunteer.id %>"><%=volunteer.name%></a></li>
-        <% end %>
-      </ul>
-    <% else %>
-        <p>There are currently no volunteers</p>
-    <% end %>
-  </div>
-  <div class="col-md-6">
-    <h4>Add a volunteer:</h4>
-    <form action="/new_volunteer" method="post">
-      <div class="form-group">
-        <label for="name">Volunteer Name</label>
-        <input class="form-control" type="text" name="name">
-      </div>
-      <div class="form-group">
-        <label for="project_id">Assign to Project</label>
-        <select id='project_id' name='project_id' type='text' class="form-control">
-          <% @projects.each() do |project| %>
-            <option value="<%= project.id()%>"> <%= project.title %> </option>
+  <% if @projects.any? %>
+    <div class="col-md-6">
+      <h3>Here are your current volunteers</h3>
+      <% if @volunteers.any? %>
+        <ul>
+          <% @volunteers.each do |volunteer| %>
+            <li><a href="/volunteer/<%= volunteer.id %>"><%=volunteer.name%></a></li>
           <% end %>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-info">Add Volunteer</button>
-    </form>
-  </div>
+        </ul>
+      <% else %>
+          <p>There are currently no volunteers</p>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <h4>Add a volunteer:</h4>
+      <form action="/new_volunteer" method="post">
+        <div class="form-group">
+          <label for="name">Volunteer Name</label>
+          <input class="form-control" type="text" name="name">
+        </div>
+        <div class="form-group">
+          <label for="project_id">Assign to Project</label>
+          <select id='project_id' name='project_id' type='text' class="form-control">
+            <% @projects.each() do |project| %>
+              <option value="<%= project.id()%>"> <%= project.title %> </option>
+            <% end %>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-info">Add Volunteer</button>
+      </form>
+    </div>
+  <% else %>
+    <h3>Please add a project to add volunteers.</h3>
+  <% end %>
 </div>
