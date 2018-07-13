@@ -35,7 +35,13 @@ class Volunteer
 
   def project
     project = DB.exec("SELECT title FROM projects WHERE id = #{self.project_id};")
-    project_title = project.first["title"]
+    project_title = ""
+    if project.first == nil
+      project_title = "Needs Reassignment"
+    else
+      project_title = project.first["title"]
+    end
+    project_title
   end
 
   def self.find(id)
