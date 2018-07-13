@@ -36,3 +36,22 @@ get('/project/:id') do
   @volunteers = @project.volunteers
   erb(:project)
 end
+
+patch('/project/:id') do
+ id = params["id"].to_i
+ new_title = params['new_title']
+ @project = Project.find(id)
+ @project.update({:title => new_title})
+ @volunteers = Volunteer.all
+ erb(:project)
+end
+
+delete('/project/:id') do
+  id = params['id'].to_i
+  @project = Project.find(id)
+  @project.delete
+  @projects = Project.all
+  @volunteers = Volunteer.all
+  redirect '/'
+  erb(:index)
+end

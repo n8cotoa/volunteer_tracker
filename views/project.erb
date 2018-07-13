@@ -13,6 +13,21 @@
     <% end %>
   </div>
   <div class="col-md-6">
-
+    <h4>Make changes to <%=@project.title%></h4>
+    <form action="/project/<%=@project.id%>" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <div class="form-group">
+        <label for="new_title">Rename Project</label>
+        <input type="text" name="new_title" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-success">Update</button>
+    </form>
+    <form action="/project/<%=@project.id%>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <div class="form-group">
+        <label>Delete Project</label>
+      </div>
+      <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
   </div>
 </div>
