@@ -73,3 +73,13 @@ patch('/volunteer/:id') do
  @project = @volunteer.project
  erb(:volunteer)
 end
+
+delete('/volunteer/:id') do
+  id = params['id'].to_i
+  @volunteer = Volunteer.find(id)
+  @volunteer.delete
+  @projects = Project.all
+  @volunteers = Volunteer.all
+  redirect '/'
+  erb(:index)
+end
