@@ -29,6 +29,15 @@ def save
   @id = result.first.fetch('id').to_i
 end
 
+def update(attr)
+  @title = attr.fetch(:title, @title)
+   DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{self.id};")
+end
+
+def delete
+  DB.exec("DELETE FROM projects WHERE id = #{self.id};")
+end
+
 def ==(another_project)
   self.title.==(another_project.title)
 end
