@@ -15,11 +15,13 @@ An application that tracks projects and volunteers
 1. Start postgres
 1. Create a relational database on your machine
 1. Direct database backup into your database
-  * Open new tab in terminal
-  * Run $ ruby app.rb in terminal in the root directory of the app to start web app
-  * Hit Ctrl + C in both tabs to terminate the server and app
 1. Commit and push your changes
 1. Create a PR
+
+To Run App:
+1.Open new tab in terminal
+1. Run $ ruby app.rb in terminal in the root directory of the app to start web app
+1. Hit Ctrl + C in both tabs to terminate the server and app
 
 ## Technologies Used
 
