@@ -19,7 +19,8 @@ An application that tracks projects and volunteers
 1. Create a PR
 
 To Run App:
-1.Open new tab in terminal
+
+1. Open new tab in terminal
 1. Run $ ruby app.rb in terminal in the root directory of the app to start web app
 1. Hit Ctrl + C in both tabs to terminate the server and app
 
